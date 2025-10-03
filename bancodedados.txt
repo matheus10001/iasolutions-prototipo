@@ -1,0 +1,33 @@
+-- Criar banco
+CREATE DATABASE ia_solutions;
+
+USE ia_solutions;
+
+-- Tabela de contatos (mensagens enviadas pelo site)
+CREATE TABLE contatos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    mensagem TEXT NOT NULL,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabela de clientes
+CREATE TABLE clientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    telefone VARCHAR(20),
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabela de pedidos (exemplo de venda de serviço)
+CREATE TABLE pedidos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id INT NOT NULL,
+    produto VARCHAR(150) NOT NULL,
+    valor DECIMAL(10,2) NOT NULL,
+    status ENUM('pendente', 'pago', 'cancelado') DEFAULT 'pendente',
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (cliente_id) REFERENCES clientes(id)
+);
