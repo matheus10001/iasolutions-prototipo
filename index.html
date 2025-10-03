@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>IA Solutions - Protótipo</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f4f8;
+    margin: 0; padding: 0;
+  }
+  header {
+    background: #0055aa;
+    color: white;
+    padding: 15px 30px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  header h1 {
+    margin: 0;
+  }
+  nav a {
+    color: white; margin-left: 20px; text-decoration: none; font-weight: bold;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+  main {
+    max-width: 800px;
+    margin: 30px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  }
+  h2 {
+    color: #0055aa;
+  }
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  ul li {
+    background: #e7f0ff;
+    margin: 8px 0;
+    padding: 10px 15px;
+    border-radius: 6px;
+  }
+  form {
+    margin-top: 20px;
+    display: flex; flex-direction: column;
+  }
+  input, textarea {
+    font-size: 1em;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    resize: vertical;
+  }
+  button {
+    background: #0055aa;
+    color: white;
+    font-size: 1em;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  button:hover {
+    background: #004080;
+  }
+  .payment-btn {
+    display: inline-block;
+    background: #ff9900;
+    color: black;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+  }
+  .payment-btn:hover {
+    background: #cc7a00;
+  }
+  footer {
+    text-align: center;
+    margin: 30px 0;
+    color: #555;
+  }
+  .ads {
+    background: #cce5ff;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    color: #003366;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>IA Solutions</h1>
+  <nav>
+    <a href="#services">Serviços</a>
+    <a href="#contact">Contato</a>
+  </nav>
+</header>
+
+<main>
+  <section id="services">
+    <h2>Nossos Serviços</h2>
+    <ul>
+      <li>Consultoria em Inteligência Artificial</li>
+      <li>Desenvolvimento de Chatbots</li>
+      <li>Automação de Processos</li>
+      <li>Análise de Dados Avançada</li>
+    </ul>
+
+    <a href="https://pagseguro.uol.com.br/" target="_blank" class="payment-btn" rel="noopener">Pague sua Consultoria Aqui</a>
+
+    <div class="ads">
+      Publicidade: Aproveite 20% de desconto em nossos serviços! Promoção válida até fim do mês.
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Fale Conosco</h2>
+    <form id="contact-form">
+      <input type="text" name="nome" placeholder="Seu nome" required />
+      <input type="email" name="email" placeholder="Seu e-mail" required />
+      <textarea name="mensagem" rows="5" placeholder="Sua mensagem" required></textarea>
+      <button type="submit">Enviar Mensagem</button>
+    </form>
+    <p>Ou fale conosco via WhatsApp: <a href="https://wa.me/5511999999999" target="_blank" rel="noopener">+55 11 99999-9999</a></p>
+  </section>
+</main>
+
+<footer>
+  © 2025 IA Solutions - Todos os direitos reservados
+</footer>
+
+<script>
+  const form = document.getElementById('contact-form');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    // Pegando valores
+    const nome = form.nome.value.trim();
+    const email = form.email.value.trim();
+    const mensagem = form.mensagem.value.trim();
+
+    if(!nome || !email || !mensagem) {
+      alert('Por favor, preencha todos os campos.');
+      return;
+    }
+
+    // Simulação de envio - salvar no localStorage (simulando servidor de dados)
+    const contatos = JSON.parse(localStorage.getItem('contatos') || '[]');
+
+    contatos.push({ nome, email, mensagem, data: new Date().toISOString() });
+
+    localStorage.setItem('contatos', JSON.stringify(contatos));
+
+    alert('Mensagem enviada com sucesso! (Simulação local)');
+
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
